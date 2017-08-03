@@ -1,0 +1,30 @@
+{% extends "website/header.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  {% load static %}
+    
+  <title>Sign-Up/Login Form</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+      <link href="{% static 'accounts/css/style.css' %}" rel="stylesheet">
+      <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+  
+</head>
+
+<body>
+  <div class="form">
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href=/accounts/login/>Log In</a></li>
+        <li class="tab"><a href="/accounts/register/">Sign Up</a></li>
+      </ul>
+</div>
+</body>
+</html>
+{% endblock %}
