@@ -1,0 +1,67 @@
+{% extends "website/header.html" %}
+{% block content %}
+
+
+  <!--   {% for post in object_list %}
+        <h5>{{post.date|date:"Y-m-d"}} <a href="/blog/{{post.id}}">{{post.title}}</a></h5>
+        <h2>{{post.id}}</h2>
+    {% endfor %}
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Home - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    {% load static %}
+    <link href="{% static 'website/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'website/css/blog-home.css' %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+                
+                  <h1 class="page-header">
+                    {{post.title}}
+                    <small>by {{post.author}}</small>
+                </h1>
+               <!--  <h2>
+                    <a href="blog/{{post.id}}">{{post.title}}</a>
+                </h2>
+                <p class="lead">
+                    by <a href="index.php">{{post.author}}</a>
+                </p> -->
+                <hr>
+               <!--  <hr>
+                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <hr> -->
+                <p>{{post.body|safe|linebreaks}}</p>
+                <!-- <a class="btn btn-primary" href="/blog/{{post.id}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a> -->
+
+                <hr>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{post.date|date:"Y-m-d"}}</p>
+                    <hr>
+                    <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
+</body>
+</html>
+
+{% endblock %}
