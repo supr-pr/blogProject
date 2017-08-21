@@ -1,13 +1,26 @@
 {% extends "website/header.html" %}
 {% block content %}
 
+
+	<!-- <h1> add new cmnt</h1>
+  
+	<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+		<button type='submit'>Submit</button>
+	</form>
+ -->
+
+
+
+
 <!DOCTYPE html>
 <html >
 <head>
   <meta charset="UTF-8">
   {% load static %}
     
-  <title>Sign-Up/Login Form</title>
+  <title>Commenting Form</title>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -30,7 +43,7 @@
       <!-- <div class="tab-content">         -->
 
         <div id="login">   
-          <h1>Welcome Back!</h1>
+          <h1>Comment Here:</h1>
           
            <form method="post"> {% csrf_token %}
           {% for field in form %}
@@ -40,18 +53,21 @@
                 {{ field.errors }}
                 
             </div>
+            <p>
                 <label>
                   {{ field.label }}<span class="req">*</span>
                 </label>
+             </p>
+             <br><br>
                 {{field}}
           </div>
             {% endfor %}
 
           
-          <p class="forgot"><a href="/accounts/password_reset/">Forgot Password?</a></p>
+          
           
           <!-- <button class="button button-block"/>Log In</button> -->
-          <button type="submit" class="button button-block"/>Log In</button>
+          <button type="submit" class="button button-block"/>Submit Comment</button>
 
           
           </form>
@@ -65,7 +81,6 @@
 
     <!-- <script src="js/index.js"></script> -->
     <script src="{% static 'accounts/js/index.js' %}"></script>
-
 
 </body>
 </html>

@@ -70,7 +70,8 @@
 	</div>
 	<footer>
 		<div class="container-fluid" style='margin-left:15px'>
-			<p><a href="#" target="blank">Contact</a> | <a href="#" target="blank">LinkedIn</a> | <a href="#" target="blank">Twitter</a> | <a href="#" target="blank">Google+</a></p>
+			<p><a href="/contact/" target="blank">Contact</a> | <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" >Facebook</a> | <a href="#" target="blank">LinkedIn</a> | <a href="#" target="blank">Twitter</a> | <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" >Google+</a></p>
+			<p> <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></p>
 		</div>
 	</footer>	
 	

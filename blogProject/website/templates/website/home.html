@@ -20,6 +20,8 @@
 
     <!-- Custom CSS -->
     <link href="{% static 'website/css/blog-home.css' %}" rel="stylesheet">
+    <link href="{% static 'website/css/comment.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -79,7 +81,9 @@
 
                 {% for post in object_list %}
                 <!-- First Blog Post -->
+                <div class="well">
                 <h2>
+
                     <a href="/blog/{{post.id}}">{{post.title}}</a>
                 </h2>
                 <p class="lead">
@@ -94,12 +98,61 @@
                 <hr>
 
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{post.date|date:"Y-m-d"}}</p>
+                </div>
                     <hr>
+                    <h3>Comments:</h3>
+                                <div class="well">
+
+                                {% for obj in comments %}
+                                        {% if post.id == obj.comnt_on.id %}
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-sm-8">
+                                                                     <div class="panel panel-white post panel-shadow">
+                                                                            <div class="post-heading">
+                                                                                    <div class="pull-left image">
+                                                                                        <!-- <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image"> -->
+                                                                                    </div>
+                                                                                <div class="pull-left meta">
+                                                                                    <div class="title h5">
+                                                                                        <a href="#"><b>{{obj.author}}</b></a>
+                                                                                        made a post.
+                                                                                    </div>
+                                                                                    
+                                                                                     <h6 class="text-muted time">@ {{obj.date}} </h6>
+                                                                                    
+                                                                                 </div>
+                                                                             </div> 
+                                                                        {% if post.author == obj.author %} 
+                                                                                 <div class="post-description"> 
+                                                                               <p> {{ obj.content|linebreaks}} </p>
+                                                                        </div>
+                                                                        {% else %}
+                                                                            
+
+                                                                             <br>
+                                                                            <div class="post-description"> 
+                                                                                   <p> {{ obj.content|linebreaks}} </p>
+                                                                            </div>
+                                                                            <br>
+                                                                         {% endif %}
+                                                                        
+                                                                     </div>
+                                                                </div>
+                                                             </div>
+                                                        </div>                               
+                                       {% endif %}
+                            {% endfor %}
+                                                 <a href="{{ post.id }}/comnt/" class="btn btn-primary">Leave a comment<span class="glyphicon glyphicon-chevron-right"></span></a>
+
+                                </div>
                     <hr style="height:1px;border:none;color:#333;background-color:#333;" />
 
                 {% endfor %}
 
                 
+
+
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="previous">
@@ -137,7 +190,7 @@
                             <ul class="list-unstyled">
 
                             {% for obj in categories %}
-                                <li><a href="/blog/{{post.id}}">{{ obj.category }} {{obj.id}}</a>
+                                <li><a href="/blog/{{post.id}}">{{ obj.category }}</a>
                                 </li>
                                {% endfor %}
 

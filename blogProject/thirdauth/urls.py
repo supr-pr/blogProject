@@ -1,4 +1,4 @@
-"""blogProject URL Configuration
+"""thirdauth URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -13,14 +13,27 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth import views as auth_views
+from django.conf.urls import include, url
+# from django.conf.urls.defaults import *
+
+from thirdauth.views import (
+	home,
+
+)
+
+# admin.autodiscover()
+
+# urlpatterns = patterns('',
+#    url(r'^auth/$', 'thirdauth.views.home', name='home'),
+# )
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    # url(r'^website/', include('website.urls')),
-    url(r'^', include('website.urls')),
-    url(r'^accounts/', include('accounts.urls')),
-    url(r'^thirdauth/', include('thirdauth.urls')),
-    ]
+
+   # url(r'^auth/$', 'thirdauth.views.home', name='home'),
+   url(r'^auth/$', home),
+   url('', include('social.apps.django_app.urls', namespace='social')),
+	url('', include('django.contrib.auth.urls', namespace='auth')),
+]
+
+
